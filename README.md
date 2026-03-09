@@ -8,6 +8,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 2**: Learning Solana Programming: Anchor, Accounts, and Programs
 - [x] **Day 3**: Anchor Function Signatures and Accounts
 - [x] **Day 4**: Custom Errors in Anchor
+- [x] **Day 5**: Anchor IDL and Client-side interaction
 
 ## 🛠 Tech Stack
 
@@ -44,6 +45,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Handled logical constraints within instructions using the `require!` macro.
 - Demonstrated returning the custom errors such as "a is too small" and mapping error codes manually.
 - Implemented frontend unit tests using Chai asserting against AnchorError and checking error messages/codes.
+
+### Day 5: Anchor IDL and Client-side interaction
+
+- Explored the Anchor IDL (Interface Definition Language) and its role in bridging Rust programs and TypeScript clients.
+- Learned how to manually load the IDL JSON file and use it to initialize an Anchor `Program` instance.
+- Decoupled the client from the default Anchor workspace behavior to understand how the `Program` object is constructed.
+- Verified program interactions through instruction RPC calls and transaction signatures.
 
 ---
 
