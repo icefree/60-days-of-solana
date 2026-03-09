@@ -9,6 +9,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 3**: Anchor Function Signatures and Accounts
 - [x] **Day 4**: Custom Errors in Anchor
 - [x] **Day 5**: Anchor IDL and Client-side interaction
+- [x] **Day 6**: Basic Rust Concepts in Solana (Arrays, Vectors, HashMaps, Structs)
 
 ## 🛠 Tech Stack
 
@@ -52,6 +53,15 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Learned how to manually load the IDL JSON file and use it to initialize an Anchor `Program` instance.
 - Decoupled the client from the default Anchor workspace behavior to understand how the `Program` object is constructed.
 - Verified program interactions through instruction RPC calls and transaction signatures.
+
+### Day 6: Basic Rust Concepts in Solana
+
+- Explored fundamental Rust data types and control flows within an Anchor program.
+- Implemented logic using `if-else`, `match` (pattern matching), and `for` loops.
+- Worked with collection types: `Arrays` (fixed size), `Vectors` (dynamic size), and `HashMaps`.
+- Defined and used custom `Structs` to organize data.
+- Learned about constants (`const`) and basic type conversions (e.g., `len()` to `u64`).
+- Verified implementation with a TypeScript test client passing arguments to the program.
 
 ---
 
