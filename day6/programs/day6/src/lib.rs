@@ -88,7 +88,7 @@ pub mod day6 {
         let mut dynamic_array: Vec<u32> = Vec::from([1, 2, 3, 4, 5, 6]);
         let len = dynamic_array.len();
         let another_var: u64 = 5;
-        let len_plus_another_var = len + another_var;
+        let len_plus_another_var = len as u64 + another_var;
         msg!("The result is {}", len_plus_another_var);
 
         Ok(())
