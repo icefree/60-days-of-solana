@@ -10,6 +10,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 4**: Custom Errors in Anchor
 - [x] **Day 5**: Anchor IDL and Client-side interaction
 - [x] **Day 6**: Basic Rust Concepts in Solana (Arrays, Vectors, HashMaps, Structs)
+- [x] **Day 7**: Serialization and Deserialization using Borsh
 
 ## 🛠 Tech Stack
 
@@ -62,6 +63,16 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Defined and used custom `Structs` to organize data.
 - Learned about constants (`const`) and basic type conversions (e.g., `len()` to `u64`).
 - Verified implementation with a TypeScript test client passing arguments to the program.
+
+### Day 7: Serialization and Deserialization using Borsh
+
+- Learned about **Borsh** (Binary Object Representation Serializer for Hashing), the default serialization format used in Solana.
+- Implemented `AnchorSerialize` and `AnchorDeserialize` macros for custom Rust structs.
+- Explored manual encoding and decoding:
+  - Used `.try_to_vec()` to serialize a struct into a byte vector (`Vec<u8>`).
+  - Used `Person::try_from_slice()` to deserialize a byte vector back into a Rust struct.
+- Optimized program architecture by moving helper functions outside the `#[program]` block to avoid Anchor instruction constraints.
+- Verified serialized data transmission between the program instructions.
 
 ---
 
