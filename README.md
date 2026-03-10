@@ -12,6 +12,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 6**: Basic Rust Concepts in Solana (Arrays, Vectors, HashMaps, Structs)
 - [x] **Day 7**: Serialization and Deserialization using Borsh
 - [x] **Day 8**: Rust Macros in Solana
+- [x] **Day 9**: Deep Dive into Procedural Macros
 
 ## 🛠 Tech Stack
 
@@ -83,6 +84,17 @@ My journey of learning Solana development in 60 days, following the tutorial fro
   - **Custom Derive Macros**: macros used within the `#[derive(...)]` attribute, such as `#[derive(Accounts)]`.
 - Understood how macros enable Anchor to generate boilerplate code for account validation and instruction dispatch.
 - Verified how these macros transform the code during compilation to simplify Solana program development.
+
+### Day 9: Deep Dive into Procedural Macros
+
+- Explored the inner workings of Rust procedural macros:
+  - **`#[proc_macro_derive]`**: Adding traits to types without modifying the original definition.
+  - **`#[proc_macro_attribute]`**: Powerful "replacement" macros that can rewrite struct definitions and add methods.
+  - **`#[proc_macro]`**: Function-style macros for code generation.
+- Learned about `#` variable interpolation in the `quote!` macro.
+- Experimented with how attribute macros can modify struct fields (and even "destroy" original fields if not specifically preserved).
+- Understood the difference between inherent implementation (`impl Struct`) and trait implementation (`impl Trait for Struct`).
+- Fixed common macro development pitfalls like missing semicolons and crate naming conventions.
 
 ---
 
