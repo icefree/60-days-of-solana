@@ -1,16 +1,24 @@
 use anchor_lang::prelude::*;
 
-declare_id!("EoVeBpo1PScLneDAkFS2d8gx9oJWDJqUgRydYgTnRpva"); //function like macro
+// 1. Function-like macro (specifically, a declarative macro using macro_rules!)
+macro_rules! say_hello {
+    () => {
+        msg!("Hello from the declarative macro!");
+    };
+}
 
-#[program] // attribute like macro
+declare_id!("EoVeBpo1PScLneDAkFS2d8gx9oJWDJqUgRydYgTnRpva"); // Built-in function-like (proc) macro
+
+#[program] // 2. Attribute-like macro
 pub mod day8 {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
+    pub fn initialize(_ctx: Context<Initialize>) -> Result<()> {
+        say_hello!(); // Using our custom function-like macro
+        msg!("Greetings from: {:?}", _ctx.program_id);
         Ok(())
     }
 }
 
-#[derive(Accounts)] //custom derive macro
+#[derive(Accounts)] // 3. Custom derive macro
 pub struct Initialize {}
