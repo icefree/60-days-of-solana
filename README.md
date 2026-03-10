@@ -23,7 +23,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 
 ## 📖 Lessons
 
-### [Day 1: Hello World](https://www.rareskills.io/post/hello-world-solana)
+### Day 1: Hello World
 
 - Created a basic Solana program using Anchor.
 - Learned about `declare_id!`, `#[program]`, and `msg!`.
