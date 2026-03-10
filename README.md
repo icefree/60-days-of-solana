@@ -11,6 +11,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 5**: Anchor IDL and Client-side interaction
 - [x] **Day 6**: Basic Rust Concepts in Solana (Arrays, Vectors, HashMaps, Structs)
 - [x] **Day 7**: Serialization and Deserialization using Borsh
+- [x] **Day 8**: Rust Macros in Solana
 
 ## 🛠 Tech Stack
 
@@ -73,6 +74,15 @@ My journey of learning Solana development in 60 days, following the tutorial fro
   - Used `Person::try_from_slice()` to deserialize a byte vector back into a Rust struct.
 - Optimized program architecture by moving helper functions outside the `#[program]` block to avoid Anchor instruction constraints.
 - Verified serialized data transmission between the program instructions.
+
+### Day 8: Rust Macros in Solana
+
+- Explored the different types of Rust macros and their usage in the Anchor framework:
+  - **Function-like Macros**: macros that look like function calls, such as `declare_id!`.
+  - **Attribute-like Macros**: macros that are placed on items like functions and modules, such as `#[program]`.
+  - **Custom Derive Macros**: macros used within the `#[derive(...)]` attribute, such as `#[derive(Accounts)]`.
+- Understood how macros enable Anchor to generate boilerplate code for account validation and instruction dispatch.
+- Verified how these macros transform the code during compilation to simplify Solana program development.
 
 ---
 
