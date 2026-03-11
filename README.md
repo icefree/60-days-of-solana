@@ -14,6 +14,8 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 8**: Rust Macros in Solana
 - [x] **Day 9**: Deep Dive into Procedural Macros
 
+- [x] **Day 10**: Solana Internal Functions
+
 ## 🛠 Tech Stack
 
 - **Solana CLI**
@@ -95,6 +97,15 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Experimented with how attribute macros can modify struct fields (and even "destroy" original fields if not specifically preserved).
 - Understood the difference between inherent implementation (`impl Struct`) and trait implementation (`impl Trait for Struct`).
 - Fixed common macro development pitfalls like missing semicolons and crate naming conventions.
+
+### Day 10: Solana Internal Functions
+
+- Explored the difference between **Instruction Functions** and **Internal Functions** in Anchor.
+- Learned that functions inside a **nested `pub mod` block** within `#[program]` are **not** included in the built program as instructions (not in IDL), but are still accessible within or outside the module as legal Rust code.
+- Successfully implemented modularity by:
+  - Using external modules (`mod calculate`) for business logic.
+  - Using nested modules within `#[program]` for internal-only logic.
+- Understood the **KISS** and **SRP** (Single Responsibility Principle) benefits of isolating internal helper logic from public entry points.
 
 ---
 
