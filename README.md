@@ -15,6 +15,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 9**: Deep Dive into Procedural Macros
 
 - [x] **Day 10**: Solana Internal Functions
+- [x] **Day 11**: Using Clock Sysvar and Chrono
 
 ## 🛠 Tech Stack
 
@@ -106,6 +107,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
   - Using external modules (`mod calculate`) for business logic.
   - Using nested modules within `#[program]` for internal-only logic.
 - Understood the **KISS** and **SRP** (Single Responsibility Principle) benefits of isolating internal helper logic from public entry points.
+
+### Day 11: Using Clock Sysvar and Chrono
+
+- Learned how to access the **Clock Sysvar** in Solana using `Clock::get()?`.
+- Integrated the `chrono` crate for advanced date and time handling.
+- Implemented logic to convert the `unix_timestamp` into a human-readable day of the week.
+- Verified program interaction using a TypeScript test client and checked program logs for the current timestamp and day.
 
 ---
 
