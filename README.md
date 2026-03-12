@@ -17,6 +17,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 10**: Solana Internal Functions
 - [x] **Day 11**: Using Clock Sysvar and Chrono
 - [x] **Day 12**: More Solana Sysvars (StakeHistory, RecentBlockhashes, Instructions, LastRestartSlot)
+- [x] **Day 13**: Solana Events
 
 ## 🛠 Tech Stack
 
@@ -125,6 +126,15 @@ My journey of learning Solana development in 60 days, following the tutorial fro
   - **LastRestartSlot**: Identifying the last slot where the network was restarted.
 - Learned how to define these as `AccountInfo` in the `Accounts` struct and use `from_account_info` for deserialization.
 - Verified data retrieval and logging through TypeScript integration tests.
+
+### Day 13: Solana Events
+
+- Learned how to define events using the `#[event]` macro in Anchor.
+- Emitted events from program instructions using the `emit!` macro.
+- Subscribed to program events from a TypeScript client using `program.addEventListener`.
+- **Note**: In the client-side `addEventListener`, event names derived from Rust structs should be **lower camelCase** (e.g., `MySecondEvent` in Rust becomes `mySecondEvent` in TypeScript).
+- Managed event lifecycle by removing listeners with `program.removeEventListener`.
+- Verified event emission and reception with integrated tests.
 
 
 ---
