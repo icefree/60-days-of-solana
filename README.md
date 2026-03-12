@@ -16,6 +16,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 
 - [x] **Day 10**: Solana Internal Functions
 - [x] **Day 11**: Using Clock Sysvar and Chrono
+- [x] **Day 12**: More Solana Sysvars (StakeHistory, RecentBlockhashes, Instructions, LastRestartSlot)
 
 ## 🛠 Tech Stack
 
@@ -108,12 +109,23 @@ My journey of learning Solana development in 60 days, following the tutorial fro
   - Using nested modules within `#[program]` for internal-only logic.
 - Understood the **KISS** and **SRP** (Single Responsibility Principle) benefits of isolating internal helper logic from public entry points.
 
-### Day 11: Using Clock Sysvar and Chrono
+### Day 11: Clock and RecentBlockhashes Sysvars
 
 - Learned how to access the **Clock Sysvar** in Solana using `Clock::get()?`.
-- Integrated the `chrono` crate for advanced date and time handling.
-- Implemented logic to convert the `unix_timestamp` into a human-readable day of the week.
-- Verified program interaction using a TypeScript test client and checked program logs for the current timestamp and day.
+- Integrated the `chrono` crate for advanced date and time handling, converting `unix_timestamp` into a human-readable day of the week.
+- Explored the **RecentBlockhashes Sysvar** to retrieve the latest blockhash and metadata.
+- Verified program interaction using a TypeScript test client and checked program logs for the current timestamp, blockhash, and day.
+
+### Day 12: Exploring More Solana Sysvars
+
+- Expanded knowledge of Solana **Sysvars** (System Variables) that provide cluster state information:
+  - **StakeHistory**: Tracking account stake status (noted memory limits for full serialization).
+  - **RecentBlockhashes**: Accessing previous blockhashes (alternative to Day 11 method).
+  - **Instructions**: Using the instruction sysvar to inspect the current transaction's instructions via `load_instruction_at_checked`.
+  - **LastRestartSlot**: Identifying the last slot where the network was restarted.
+- Learned how to define these as `AccountInfo` in the `Accounts` struct and use `from_account_info` for deserialization.
+- Verified data retrieval and logging through TypeScript integration tests.
+
 
 ---
 

@@ -10,7 +10,15 @@ describe("day11", () => {
 
   it("Is initialized!", async () => {
     // Add your test here.
-    const tx = await program.methods.getDayOfTheWeek().rpc();
+    const tx = await program.methods.getDayOfTheWeek().accounts({
+      recentBlockhashes: anchor.web3.SYSVAR_RECENT_BLOCKHASHES_PUBKEY,
+    }).rpc();
     console.log("Your transaction signature", tx);
+    const tx2 = await program.methods.initialize()
+    .accounts({
+      recentBlockhashes: anchor.web3.SYSVAR_RECENT_BLOCKHASHES_PUBKEY,
+    })
+    .rpc();
+    console.log("Your transaction signature", tx2);
   });
 });
