@@ -18,6 +18,8 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 11**: Using Clock Sysvar and Chrono
 - [x] **Day 12**: More Solana Sysvars (StakeHistory, RecentBlockhashes, Instructions, LastRestartSlot)
 - [x] **Day 13**: Solana Events
+- [x] **Day 14**: Access Control & Validation
+- [x] **Day 15**: Compute Units and Data Types
 
 ## 🛠 Tech Stack
 
@@ -136,6 +138,21 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Managed event lifecycle by removing listeners with `program.removeEventListener`.
 - Verified event emission and reception with integrated tests.
 
+
+### Day 14: Access Control & Validation
+
+- Learned how to use Anchor's `#[access_control]` attribute to enforce custom safety rules before an instruction executes.
+- Implemented explicit checking by validating the transaction `signer1` against a hardcoded `OWNER` constant.
+- Used the `require_keys_eq!` macro for concise and readable public key comparison.
+- Handled inline string parsing to a `Pubkey` object using Rust's Turbofish syntax (`OWNER.parse::<Pubkey>().unwrap()`).
+- Triggered custom error enforcement (`OnlyOwnerError::NotOwner`) for unverified clients.
+
+### Day 15: Compute Units and Data Types
+
+- Explored the impact of Rust integer types on Solana Compute Unit (CU) costs during variable allocation.
+- Demonstrated that initializing and pushing to vectors of larger types (`Vec<u64>`, `Vec<i64>`, `Vec<i32>`) costs roughly 480 CU.
+- Showed that using smaller integer types like `Vec<u8>` substantially reduces compute cost to around 371 CU.
+- Verified pre and post-transaction balances showing that despite differing CU consumptions, the base transaction fee (5000 lamports) remains consistent up to the compute limits.
 
 ---
 
