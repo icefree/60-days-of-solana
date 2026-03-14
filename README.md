@@ -21,6 +21,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 14**: Access Control & Validation
 - [x] **Day 15**: Compute Units and Data Types
 - [x] **Day 16**: Program Derived Addresses (PDAs)
+- [x] **Day 17**: Modifying PDA Account State
 
 ## 🛠 Tech Stack
 
@@ -161,6 +162,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Explored how to initialize a PDA account using Anchor's `#[account(init, ...)]` constraints, supplying `seeds` and a `bump` value.
 - Used `std::mem::size_of` to dynamically calculate the `space` needed for custom structs on-chain (plus the 8-byte Anchor discriminator).
 - Handled PDA generation in tests using `@coral-xyz/anchor` and `PublicKey.findProgramAddressSync` to deterministically find addresses.
+
+### Day 17: Modifying PDA Account State
+
+- Learned how to persist and modify state within a Program Derived Address (PDA).
+- Used the `#[account(mut, seeds = [], bump)]` derive macro to securely reference and update existing PDA accounts without reallocation.
+- Implemented instructions to interact with the PDA state: setting specific values (`set`), mutating existing values (`increase_x`), and reading values (`print_x`).
+- Understood how continuous modifications via sequential RPC client calls permanently alter the single PDA account state on-chain.
 
 ---
 
