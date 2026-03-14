@@ -20,6 +20,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 13**: Solana Events
 - [x] **Day 14**: Access Control & Validation
 - [x] **Day 15**: Compute Units and Data Types
+- [x] **Day 16**: Program Derived Addresses (PDAs)
 
 ## 🛠 Tech Stack
 
@@ -153,6 +154,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Demonstrated that initializing and pushing to vectors of larger types (`Vec<u64>`, `Vec<i64>`, `Vec<i32>`) costs roughly 480 CU.
 - Showed that using smaller integer types like `Vec<u8>` substantially reduces compute cost to around 371 CU.
 - Verified pre and post-transaction balances showing that despite differing CU consumptions, the base transaction fee (5000 lamports) remains consistent up to the compute limits.
+
+### Day 16: Program Derived Addresses (PDAs)
+
+- Learned about **Program Derived Addresses (PDAs)**, which allow a Solana program to natively own and control accounts.
+- Explored how to initialize a PDA account using Anchor's `#[account(init, ...)]` constraints, supplying `seeds` and a `bump` value.
+- Used `std::mem::size_of` to dynamically calculate the `space` needed for custom structs on-chain (plus the 8-byte Anchor discriminator).
+- Handled PDA generation in tests using `@coral-xyz/anchor` and `PublicKey.findProgramAddressSync` to deterministically find addresses.
 
 ---
 
