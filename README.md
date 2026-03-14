@@ -22,6 +22,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 15**: Compute Units and Data Types
 - [x] **Day 16**: Program Derived Addresses (PDAs)
 - [x] **Day 17**: Modifying PDA Account State
+- [x] **Day 18**: Cross-Program Account Reading
 
 ## 🛠 Tech Stack
 
@@ -169,6 +170,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Used the `#[account(mut, seeds = [], bump)]` derive macro to securely reference and update existing PDA accounts without reallocation.
 - Implemented instructions to interact with the PDA state: setting specific values (`set`), mutating existing values (`increase_x`), and reading values (`print_x`).
 - Understood how continuous modifications via sequential RPC client calls permanently alter the single PDA account state on-chain.
+
+### Day 18: Cross-Program Account Reading
+
+- Learned how to read account data from an external Solana program by loading its corresponding IDL and program ID.
+- Investigated the `anchor.Program` function signature changes introduced in Anchor v0.30+, where the constructor parameter changed to `(idl, provider)` (the `programId` is now parsed directly from the IDL's `address` field).
+- Successfully instantiated a cross-program instance utilizing type casting (`otherIdl as anchor.Idl`) and dynamically fetched the provider via `anchor.getProvider()`.
+- Explicitly fetched arbitrary account information using the `@solana/web3.js` connection via `connection.getAccountInfo`.
 
 ---
 
