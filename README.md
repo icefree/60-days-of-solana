@@ -142,7 +142,6 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Managed event lifecycle by removing listeners with `program.removeEventListener`.
 - Verified event emission and reception with integrated tests.
 
-
 ### Day 14: Access Control & Validation
 
 - Learned how to use Anchor's `#[access_control]` attribute to enforce custom safety rules before an instruction executes.
@@ -181,8 +180,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 
 ### Day 19: PDA Security and Canonical Bumps
 
-- Identified and fixed critical vulnerabilities involving missing PDA (Program Derived Address) validation in Anchor programs.
-- Learned how neglecting `seeds` and `bump` constraints allows attackers to supply arbitrary accounts disguised as valid PDAs.
+- Learned how "mapping" works in solana
 - Explored the cryptography behind Canonical Bumps, understanding how Anchor deterministically selects the highest valid bump to ensure uniqueness.
 - Utilized Anchor's concise `bump` macro feature to securely enforce PDA constraints with minimal boilerplate and maximum safety, embodying the **DRY** (Don't Repeat Yourself) and **YAGNI** (You Aren't Gonna Need It) principles.
 
