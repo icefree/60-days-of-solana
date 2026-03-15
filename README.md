@@ -23,6 +23,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 16**: Program Derived Addresses (PDAs)
 - [x] **Day 17**: Modifying PDA Account State
 - [x] **Day 18**: Cross-Program Account Reading
+- [x] **Day 19**: PDA Security and Canonical Bumps
 
 ## 🛠 Tech Stack
 
@@ -177,6 +178,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Investigated the `anchor.Program` function signature changes introduced in Anchor v0.30+, where the constructor parameter changed to `(idl, provider)` (the `programId` is now parsed directly from the IDL's `address` field).
 - Successfully instantiated a cross-program instance utilizing type casting (`otherIdl as anchor.Idl`) and dynamically fetched the provider via `anchor.getProvider()`.
 - Explicitly fetched arbitrary account information using the `@solana/web3.js` connection via `connection.getAccountInfo`.
+
+### Day 19: PDA Security and Canonical Bumps
+
+- Identified and fixed critical vulnerabilities involving missing PDA (Program Derived Address) validation in Anchor programs.
+- Learned how neglecting `seeds` and `bump` constraints allows attackers to supply arbitrary accounts disguised as valid PDAs.
+- Explored the cryptography behind Canonical Bumps, understanding how Anchor deterministically selects the highest valid bump to ensure uniqueness.
+- Utilized Anchor's concise `bump` macro feature to securely enforce PDA constraints with minimal boilerplate and maximum safety, embodying the **DRY** (Don't Repeat Yourself) and **YAGNI** (You Aren't Gonna Need It) principles.
 
 ---
 
