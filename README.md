@@ -26,7 +26,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 19**: PDA Security and Canonical Bumps
 - [x] **Day 20**: PDA Account Reallocation and Rent
 - [x] **Day 21**: Reading Account Balances
-- [x] **Day 22**: Solidity to Solana Concept Mapping
+- [x] **Day 22**: Function modifiers (view, pure, payable) and fallback functions in Solana: why they don't exist
 
 ## 🛠 Tech Stack
 
