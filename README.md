@@ -24,6 +24,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 17**: Modifying PDA Account State
 - [x] **Day 18**: Cross-Program Account Reading
 - [x] **Day 19**: PDA Security and Canonical Bumps
+- [x] **Day 20**: PDA Account Reallocation and Rent
 
 ## 🛠 Tech Stack
 
@@ -183,6 +184,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Learned how "mapping" works in solana
 - Explored the cryptography behind Canonical Bumps, understanding how Anchor deterministically selects the highest valid bump to ensure uniqueness.
 - Utilized Anchor's concise `bump` macro feature to securely enforce PDA constraints with minimal boilerplate and maximum safety, embodying the **DRY** (Don't Repeat Yourself) and **YAGNI** (You Aren't Gonna Need It) principles.
+
+### Day 20: PDA Account Reallocation and Rent
+
+- Learned how to calculate the cost of account storage (rent) on Solana dynamically using the `solana_program::rent` module variables like `ACCOUNT_STORAGE_OVERHEAD` and `DEFAULT_LAMPORTS_PER_BYTE_YEAR`.
+- Used the `#[account(mut, realloc = ...)]` macro inside the `Accounts` struct to resize existing PDA accounts dynamically on-chain.
+- Understood and applied the `realloc::zero = false` and `realloc::payer = signer` attributes.
+- Verified that resizing a PDA requires funding from the payer and fetched updated `accountInfo` in TypeScript to observe space changes.
 
 ---
 
