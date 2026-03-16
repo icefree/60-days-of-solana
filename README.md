@@ -25,6 +25,8 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 18**: Cross-Program Account Reading
 - [x] **Day 19**: PDA Security and Canonical Bumps
 - [x] **Day 20**: PDA Account Reallocation and Rent
+- [x] **Day 21**: Reading Account Balances
+- [x] **Day 22**: Solidity to Solana Concept Mapping
 
 ## 🛠 Tech Stack
 
@@ -191,6 +193,19 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Used the `#[account(mut, realloc = ...)]` macro inside the `Accounts` struct to resize existing PDA accounts dynamically on-chain.
 - Understood and applied the `realloc::zero = false` and `realloc::payer = signer` attributes.
 - Verified that resizing a PDA requires funding from the payer and fetched updated `accountInfo` in TypeScript to observe space changes.
+
+### Day 21: Reading Account Balances
+
+- Learned how to read a Solana account's SOL balance directly via `acct.lamports()`.
+- Explored using `AccountInfo` and its alias `UncheckedAccount` to pass raw accounts into instructions without Anchor automatically parsing them.
+- Understood that the `/// CHECK:` comment is required by Anchor when using `UncheckedAccount` to explicitly document why security checks are bypassed.
+
+### Day 22: Solidity to Solana Concept Mapping
+
+- Compared Solidity smart contract concepts to Solana program concepts.
+- Understood that Solana does not have built-in fallback or receive functions.
+- Learned that Solana doesn't use "view" or "pure" function concepts, as reading state can happen effortlessly without transactions via RPC.
+- Noted that there are no "payable" functions in Solana; programs execute token/SOL transfers from the user's account using Cross-Program Invocations (CPIs), rather than users pushing SOL directly to a payable function.
 
 ---
 
