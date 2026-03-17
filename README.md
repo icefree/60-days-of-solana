@@ -27,6 +27,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 20**: PDA Account Reallocation and Rent
 - [x] **Day 21**: Reading Account Balances
 - [x] **Day 22**: Function modifiers (view, pure, payable) and fallback functions in Solana: why they don't exist
+- [x] **Day 23**: CPIs, Transferring SOL, and Remaining Accounts
 
 ## 🛠 Tech Stack
 
@@ -206,6 +207,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Understood that Solana does not have built-in fallback or receive functions.
 - Learned that Solana doesn't use "view" or "pure" function concepts, as reading state can happen effortlessly without transactions via RPC.
 - Noted that there are no "payable" functions in Solana; programs execute token/SOL transfers from the user's account using Cross-Program Invocations (CPIs), rather than users pushing SOL directly to a payable function.
+
+### Day 23: CPIs, Transferring SOL, and Remaining Accounts
+
+- Learned how to send SOL from a user's account to other accounts using Cross-Program Invocations (CPIs) to the System Program (`system_program::transfer`).
+- Explored constructing `CpiContext` with the system program and transfer arguments (`from` and `to` accounts).
+- Used `ctx.remaining_accounts` to accept a dynamic list of recipients in an instruction without defining them explicitly in the `Accounts` struct.
+- Implemented logic to divide a specified SOL amount equally among all provided remaining accounts.
 
 ---
 
