@@ -28,6 +28,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 21**: Reading Account Balances
 - [x] **Day 22**: Function modifiers (view, pure, payable) and fallback functions in Solana: why they don't exist
 - [x] **Day 23**: CPIs, Transferring SOL, and Remaining Accounts
+- [x] **Day 24**: Account Constraints and Custom Errors
 
 ## 🛠 Tech Stack
 
@@ -214,6 +215,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Explored constructing `CpiContext` with the system program and transfer arguments (`from` and `to` accounts).
 - Used `ctx.remaining_accounts` to accept a dynamic list of recipients in an instruction without defining them explicitly in the `Accounts` struct.
 - Implemented logic to divide a specified SOL amount equally among all provided remaining accounts.
+
+### Day 24: Account Constraints and Custom Errors
+
+- Learned how to use Anchor's `has_one` constraint to securely verify that the signer is the designated `authority` on an account.
+- Implemented arbitrary logical checks directly within the `#[account(..., constraint = ...)]` macro (e.g., ensuring sufficient points before a transfer).
+- Bound custom error codes directly to constraints using the `@ Errors::CustomError` syntax, providing clear feedback when conditions fail.
+- Verified these security checks by simulating malicious transaction attempts in TypeScript tests.
 
 ---
 
