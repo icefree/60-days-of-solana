@@ -29,6 +29,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 22**: Function modifiers (view, pure, payable) and fallback functions in Solana: why they don't exist
 - [x] **Day 23**: CPIs, Transferring SOL, and Remaining Accounts
 - [x] **Day 24**: Account Constraints and Custom Errors
+- [x] **Day 25**: Keypair Accounts vs PDAs and Account Ownership
 
 ## 🛠 Tech Stack
 
@@ -222,6 +223,13 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Implemented arbitrary logical checks directly within the `#[account(..., constraint = ...)]` macro (e.g., ensuring sufficient points before a transfer).
 - Bound custom error codes directly to constraints using the `@ Errors::CustomError` syntax, providing clear feedback when conditions fail.
 - Verified these security checks by simulating malicious transaction attempts in TypeScript tests.
+
+### Day 25: Keypair Accounts vs PDAs and Account Ownership
+
+- Learned about initializing non-PDA accounts using randomly generated Keypairs via `#[account(init)]`.
+- Observed how account ownership transfers from the `SystemProgram` to the custom Solana program upon initialization.
+- Demonstrated that before initialization, a Keypair account is owned by the `SystemProgram` and can invoke `SystemProgram.transfer` to send out SOL.
+- Verified that after initialization, the same transfer fails because the custom program becomes the owner, preventing the System Program from debiting its lamports.
 
 ---
 
