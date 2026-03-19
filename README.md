@@ -30,6 +30,8 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 23**: CPIs, Transferring SOL, and Remaining Accounts
 - [x] **Day 24**: Account Constraints and Custom Errors
 - [x] **Day 25**: Keypair Accounts vs PDAs and Account Ownership
+- [x] **Day 26**: Account Ownership and Closing Accounts 
+- [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
 
@@ -230,6 +232,24 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Observed how account ownership transfers from the `SystemProgram` to the custom Solana program upon initialization.
 - Demonstrated that before initialization, a Keypair account is owned by the `SystemProgram` and can invoke `SystemProgram.transfer` to send out SOL.
 - Verified that after initialization, the same transfer fails because the custom program becomes the owner, preventing the System Program from debiting its lamports.
+
+---
+
+### Day 26: Account Ownership and Closing Accounts
+
+- Explored the concept of **Account Ownership** and how only the owner program can debit an account's lamports or change its data.
+- Learned that accounts are initially owned by the **System Program**.
+- Used the `assign()` method on `AccountInfo` to transfer ownership of an account back to the System Program (effectively "closing" it).
+- Demonstrated that when an account's ownership is changed back to the System Program, its data must be cleared (size reallocated to 0) for the transfer to succeed.
+- Verified that once an account is reassigned to the System Program, the previously owner program can no longer modify it.
+
+### Mini Project: Crowdfunding Program
+
+- Implemented a complete crowdfunding system with `initialize`, `donate`, and `withdraw` instructions.
+- Secured the `withdraw` instruction by ensuring only a specific, hardcoded public key (the project owner) can claim the funds.
+- Utilized a PDA (Program Derived Address) to securely hold and manage the contributions on-chain.
+- Implemented SOL transfers between the signer and the PDA using Anchor's `system_program` wrapper.
+- Verified functional flows including initializing the pool, processing donations, and secure withdrawals in a TypeScript test suite.
 
 ---
 
