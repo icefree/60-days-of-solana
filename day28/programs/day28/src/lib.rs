@@ -18,6 +18,12 @@ pub mod day28 {
     }
 }
 
+#[error_code]
+pub enum Error {
+    #[msg(always fails)]
+    AlwaysFails,
+}
+
 #[derive(Accounts)]
 pub struct Set<'info> {
     #[account(mut)]

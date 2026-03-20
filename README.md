@@ -269,7 +269,8 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 
 - Learned how to bundle multiple program instructions (`initialize` and `set`) into a single atomic transaction.
 - Explored using `program.methods.instruction()` and `program.methods.transaction()` to construct and combine transactions in TypeScript.
-- Understood how to sign and send manually constructed transactions using `program.provider.sendAndConfirm`.
+- Implemented a **client-side `init_if_needed` pattern** by checking account existence before adding initialization instructions to the transaction.
+- Understood how to sign and send manually constructed transactions using `anchor.web3.sendAndConfirmTransaction`.
 - Observed that when multiple instructions are combined, they execute or fail as a single atomic unit.
 - Verified the operation by combining an initialization and a state update in one go.
 
