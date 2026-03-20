@@ -31,6 +31,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 24**: Account Constraints and Custom Errors
 - [x] **Day 25**: Keypair Accounts vs PDAs and Account Ownership
 - [x] **Day 26**: Account Ownership and Closing Accounts 
+- [x] **Day 27**: Deleting Accounts and Draining Lamports
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -250,6 +251,16 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Utilized a PDA (Program Derived Address) to securely hold and manage the contributions on-chain.
 - Implemented SOL transfers between the signer and the PDA using Anchor's `system_program` wrapper.
 - Verified functional flows including initializing the pool, processing donations, and secure withdrawals in a TypeScript test suite.
+
+---
+
+### Day 27: Deleting Accounts and Draining Lamports
+
+- Learned how to manually drain lamports from an account using `sub_lamports` and `add_lamports`.
+- Explored the `init_if_needed` constraint for idempotent account initialization.
+- Demonstrated how to erase account data by reallocating `space` to 0 using `realloc(0, false)`.
+- Reassigned account ownership to the `System Program` to fully decommission an account.
+- Verified these operations with TypeScript tests, checking account existence and lamport balances.
 
 ---
 
