@@ -32,6 +32,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 25**: Keypair Accounts vs PDAs and Account Ownership
 - [x] **Day 26**: Account Ownership and Closing Accounts 
 - [x] **Day 27**: Deleting Accounts and Draining Lamports
+- [x] **Day 28**: Combining Multiple Instructions into One Transaction
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -261,6 +262,16 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Demonstrated how to erase account data by reallocating `space` to 0 using `realloc(0, false)`.
 - Reassigned account ownership to the `System Program` to fully decommission an account.
 - Verified these operations with TypeScript tests, checking account existence and lamport balances.
+
+---
+
+### Day 28: Combining Multiple Instructions into One Transaction
+
+- Learned how to bundle multiple program instructions (`initialize` and `set`) into a single atomic transaction.
+- Explored using `program.methods.instruction()` and `program.methods.transaction()` to construct and combine transactions in TypeScript.
+- Understood how to sign and send manually constructed transactions using `program.provider.sendAndConfirm`.
+- Observed that when multiple instructions are combined, they execute or fail as a single atomic unit.
+- Verified the operation by combining an initialization and a state update in one go.
 
 ---
 
