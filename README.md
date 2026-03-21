@@ -309,4 +309,14 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 
 ---
 
+### Day 31: Account, AccountInfo, and Signer
+
+- Explored the fundamental Anchor account wrappers: `Account`, `AccountInfo`, and `Signer`.
+- **`Account<'info, T>`**: Used for accounts owned by the program with deserialized data. Learned that Anchor automatically checks ownership and discriminators.
+- **`AccountInfo<'info>`**: Provides raw access to account metadata (data, lamports, owner, etc.) without automatic deserialization or ownership checks. Useful for flexible operations.
+- **`Signer<'info>`**: A specialized `AccountInfo` wrapper that verifies the account has signed the transaction, essential for authorization.
+- Demonstrated reading raw account data using `try_borrow_data()` and accessing signer properties like `lamports` and `address`.
+
+---
+
 Created with ❤️ by Rex
