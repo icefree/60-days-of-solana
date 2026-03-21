@@ -33,6 +33,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 26**: Account Ownership and Closing Accounts 
 - [x] **Day 27**: Deleting Accounts and Draining Lamports
 - [x] **Day 28**: Combining Multiple Instructions into One Transaction
+- [x] **Day 29**: Owner and Authority (Program vs Wallet)
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -273,6 +274,17 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Understood how to sign and send manually constructed transactions using `anchor.web3.sendAndConfirmTransaction`.
 - Observed that when multiple instructions are combined, they execute or fail as a single atomic unit.
 - Verified the operation by combining an initialization and a state update in one go.
+
+---
+
+### Day 29: Owner and Authority (Program vs Wallet)
+
+- Explored the fundamental distinction between **Owner** and **Authority** in Solana.
+- Learned that an **Owner** is always a program (e.g., System Program, BPFLoaderUpgradeable), while an **Authority** is typically a wallet address that provides signatures.
+- Understood that users do not "own" their wallet accounts at the runtime level; the **System Program** does.
+- Compared Solana's structural ownership rules with Solidity's "owner" design pattern.
+- Investigated program upgradeability and how the **BPFLoaderUpgradeable** program acts as the true owner of all Solana programs.
+- Discovered that a program's **Authority** and bytecode are stored in a separate **ProgramData** address, rather than the program account itself.
 
 ---
 

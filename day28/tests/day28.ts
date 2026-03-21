@@ -13,7 +13,9 @@ describe("day28", () => {
       [],
       program.programId
     );
-    console.log(pda.toBase58());
+    console.log("wallet address:", program.provider.wallet.publicKey.toBase58())
+    console.log("program address:", program.programId.toBase58())
+    console.log("pad address:", pda.toBase58());
     let transaction = new anchor.web3.Transaction()
     //frontend init_if_needed
     const accountInfo = await anchor.getProvider().connection.getAccountInfo(pda)
