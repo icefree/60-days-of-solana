@@ -34,6 +34,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 27**: Deleting Accounts and Draining Lamports
 - [x] **Day 28**: Combining Multiple Instructions into One Transaction
 - [x] **Day 29**: Owner and Authority (Program vs Wallet)
+- [x] **Day 30**: Closing Accounts with Anchor's `close` Constraint
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -285,6 +286,26 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Compared Solana's structural ownership rules with Solidity's "owner" design pattern.
 - Investigated program upgradeability and how the **BPFLoaderUpgradeable** program acts as the true owner of all Solana programs.
 - Discovered that a program's **Authority** and bytecode are stored in a separate **ProgramData** address, rather than the program account itself.
+
+---
+
+### Mini Project: Crowdfunding Program
+
+- Implemented a complete crowdfunding system with `initialize`, `donate`, and `withdraw` instructions.
+- Secured the `withdraw` instruction by ensuring only a specific, hardcoded public key (the project owner) can claim the funds.
+- Utilized a PDA (Program Derived Address) to securely hold and manage the contributions on-chain.
+- Implemented SOL transfers between the signer and the PDA using Anchor's `system_program` wrapper.
+- Verified functional flows including initializing the pool, processing donations, and secure withdrawals in a TypeScript test suite.
+
+---
+
+### Day 30: Closing Accounts with Anchor's `close` Constraint
+
+- Learned how to efficiently close Solana accounts using Anchor's built-in `close = <target>` constraint.
+- Understood that this constraint handles triple actions: draining lamports to the destination (target), clearing account data, and reassigning ownership to the System Program.
+- Demonstrated that manually clearing data and reassigning ownership (which was done in Day 27) can be simplified into a single line of procedural macro code.
+- Verified that closed PDA accounts can be redeployed/re-initialized using the same seeds.
+- Refactored account management logic to be more concise and secure using Anchor's high-level abstractions.
 
 ---
 
