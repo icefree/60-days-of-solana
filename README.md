@@ -37,6 +37,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 30**: Closing Accounts with Anchor's `close` Constraint
 - [x] **Day 31**: Account, AccountInfo, and Signer
 - [x] **Day 32**: Cross-Program Account Reading and Deserialization
+- [x] **Day 33**: Cross-Program Invocation (CPI) between Alice and Bob programs
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -328,6 +329,20 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Implemented manual deserialization using **`AccountDeserialize::try_deserialize`** with a mutable data slice.
 - Demonstrated how struct field type mismatches (e.g., `u64` vs `u32`) affect cross-program data interpretation due to little-endian representation.
 - Verified program interaction using a TypeScript client to initialize a PDA in one program and read it from another.
+
+---
+
+### Day 33: Cross-Program Invocation (CPI) between Alice and Bob programs
+
+- Learned how to implement **Cross-Program Invocation (CPI)** in Anchor, allowing one program to call an instruction of another program.
+- Explored integrating multiple programs in a single Anchor workspace (`alice` and `bob`).
+- Defined the target program as a dependency in the caller's `Cargo.toml` using `features = ["cpi"]` to enable the CPI helper module.
+- Learned how to construct a **`CpiContext`** using `CpiContext::new` to wrap the target program and its account requirements.
+- Implemented an `impl` block for the `Accounts` struct to define helper methods (e.g., `add_function_ctx`) that encapsulate CPI context generation, keeping the instruction logic clean and readable.
+- Verified the end-to-end flow:
+  1. Initialized a data account in the `bob` program.
+  2. Called the `alice` program, which internally invoked the `bob` program to perform addition and store the result.
+  3. Asserted the final state in the `bob` program via the TypeScript test client.
 
 ---
 
