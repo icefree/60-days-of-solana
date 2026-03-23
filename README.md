@@ -35,6 +35,8 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 28**: Combining Multiple Instructions into One Transaction
 - [x] **Day 29**: Owner and Authority (Program vs Wallet)
 - [x] **Day 30**: Closing Accounts with Anchor's `close` Constraint
+- [x] **Day 31**: Account, AccountInfo, and Signer
+- [x] **Day 32**: Cross-Program Account Reading and Deserialization
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -316,6 +318,16 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - **`AccountInfo<'info>`**: Provides raw access to account metadata (data, lamports, owner, etc.) without automatic deserialization or ownership checks. Useful for flexible operations.
 - **`Signer<'info>`**: A specialized `AccountInfo` wrapper that verifies the account has signed the transaction, essential for authorization.
 - Demonstrated reading raw account data using `try_borrow_data()` and accessing signer properties like `lamports` and `address`.
+
+---
+
+### Day 32: Cross-Program Account Reading and Deserialization
+
+- Learned how a Solana program can read and manually deserialize data from an account created by an external program.
+- Explored using **`AccountInfo`** to accept arbitrary accounts and **`ctx.accounts.account_name.data.borrow()`** to access raw bytes.
+- Implemented manual deserialization using **`AccountDeserialize::try_deserialize`** with a mutable data slice.
+- Demonstrated how struct field type mismatches (e.g., `u64` vs `u32`) affect cross-program data interpretation due to little-endian representation.
+- Verified program interaction using a TypeScript client to initialize a PDA in one program and read it from another.
 
 ---
 
