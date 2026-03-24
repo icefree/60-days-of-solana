@@ -52,3 +52,6 @@ User balances are not stored in the Mint Account but in separate accounts.
 ## Summary of Benefits
 - **Parallelism**: Since every user's balance is in a separate account, Solana can process thousands of transfers simultaneously.
 - **Security & Standardization**: All tokens use the same battle-tested code, eliminating the risk of custom token contract bugs.
+
+## Useful Tools
+- **[Solana Account Visualizer](https://icefree.github.io/solana-visualizer/)**: A tool to visualize the relationships between the Token Program, Mint Accounts, and Associated Token Accounts.

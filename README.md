@@ -364,6 +364,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
     - **`Freeze` / `Thaw`**: Control account activity (blacklisting).
     - **`CloseAccount`**: Reclaim SOL rent from empty accounts.
 - Compared Solana's architecture to Ethereum, noting that Solana's model enables **parallel processing** since each balance is a separate account.
+- **Visualizer**: Visualization of account relations using [Solana Account Visualizer](https://icefree.github.io/solana-visualizer/).
 
 ---
 
