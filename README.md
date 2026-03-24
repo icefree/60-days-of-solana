@@ -38,6 +38,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 31**: Account, AccountInfo, and Signer
 - [x] **Day 32**: Cross-Program Account Reading and Deserialization
 - [x] **Day 33**: Cross-Program Invocation (CPI) between Alice and Bob programs
+- [x] **Day 34**: How the SPL Token Works
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -343,6 +344,26 @@ My journey of learning Solana development in 60 days, following the tutorial fro
   1. Initialized a data account in the `bob` program.
   2. Called the `alice` program, which internally invoked the `bob` program to perform addition and store the result.
   3. Asserted the final state in the `bob` program via the TypeScript test client.
+
+---
+
+### Day 34: How the SPL Token Works
+
+- Learned about the **SPL Token Program** (`TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA`) and how it separates logic (in the program) from state (in accounts).
+- Explored the **Mint Account** as the representation of a token, storing global information like `supply`, `decimals`, and `authorities`.
+- Understood that the "Token Address" in Solana is the address of its Mint Account.
+- Learned about **Token Accounts** and **Associated Token Accounts (ATAs)** for tracking user balances.
+- Explored how ATAs are deterministically derived as PDAs from a user's wallet and the token's mint address, ensuring a 1:1 mapping and easy discovery.
+- Learned about the **Associated Token Account Program** (`ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL`) for creating ATAs.
+- Explored the primary instructions of the Token Program:
+    - **`InitializeMint`**: Create a new token.
+    - **`Transfer`**: Move tokens between accounts.
+    - **`MintTo`**: Create new token units.
+    - **`Burn`**: Destroy token units.
+    - **`Approve` / `Revoke`**: Delegate spending power (similar to ERC-20 `approve`).
+    - **`Freeze` / `Thaw`**: Control account activity (blacklisting).
+    - **`CloseAccount`**: Reclaim SOL rent from empty accounts.
+- Compared Solana's architecture to Ethereum, noting that Solana's model enables **parallel processing** since each balance is a separate account.
 
 ---
 
