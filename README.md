@@ -39,6 +39,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 32**: Cross-Program Account Reading and Deserialization
 - [x] **Day 33**: Cross-Program Invocation (CPI) between Alice and Bob programs
 - [x] **Day 34**: How the SPL Token Works
+- [x] **Day 35**: Interacting with SPL Tokens via CPI (Minting, Transferring, and Disabling Authority)
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -365,6 +366,22 @@ My journey of learning Solana development in 60 days, following the tutorial fro
     - **`CloseAccount`**: Reclaim SOL rent from empty accounts.
 - Compared Solana's architecture to Ethereum, noting that Solana's model enables **parallel processing** since each balance is a separate account.
 - **Visualizer**: Visualization of account relations using [Solana Account Visualizer](https://icefree.github.io/solana-visualizer/).
+
+---
+
+### Day 35: Interacting with SPL Tokens via CPI
+
+- Learned how to interact with the **SPL Token Program** via CPI in an Anchor program.
+- Implemented **`create_and_mint_token`**:
+    - Automatically initializes a **Mint Account** and an **Associated Token Account (ATA)** using PDA seeds and the `INIT` constraint.
+    - Uses `token::mint_to` via CPI to mint a specified amount of tokens to the ATA.
+- Implemented **`transfer_tokens`**:
+    - Uses `token::transfer` via CPI to move tokens between ATAs.
+- Implemented **`get_balance`**:
+    - Demonstrates reading the `amount` field from a `TokenAccount` in the `Accounts` struct.
+- Implemented **`disable_mint_authority`**:
+    - Uses `token::set_authority` with `AuthorityType::MintTokens` and `None` to permanently fix the token supply and disable further minting.
+- Verified and tested these instructions using a TypeScript client with `anchor-spl` helpers.
 
 ---
 
