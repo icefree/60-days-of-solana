@@ -40,6 +40,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 33**: Cross-Program Invocation (CPI) between Alice and Bob programs
 - [x] **Day 34**: How the SPL Token Works
 - [x] **Day 35**: Interacting with SPL Tokens via CPI (Minting, Transferring, and Disabling Authority)
+- [x] **Day 36**: Token Sale with PDA and Supply Cap
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -382,6 +383,17 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Implemented **`disable_mint_authority`**:
     - Uses `token::set_authority` with `AuthorityType::MintTokens` and `None` to permanently fix the token supply and disable further minting.
 - Verified and tested these instructions using a TypeScript client with `anchor-spl` helpers.
+
+---
+
+### Day 36: Token Sale with PDA and Supply Cap
+
+- Implemented a secure **Token Sale** program where users exchange SOL for tokens.
+- Utilized **PDAs** as both the **Mint Authority** and the **SOL Treasury**, ensuring the program has full control over token issuance and fund management.
+- Implemented a **Supply Cap** to prevent inflationary pressure by enforcing a hard limit on the total number of tokens that can be minted.
+- Created an **Admin Configuration** account to securely manage administrative privileges, such as withdrawing accumulated SOL from the treasury.
+- Leveraged **CPIs** to the System Program for SOL transfers and to the SPL Token Program for minting tokens.
+- Verified the complete tokens-for-SOL swap lifecycle, including supply limit enforcement and unauthorized withdrawal prevention, using a TypeScript test suite.
 
 ---
 
