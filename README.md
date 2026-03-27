@@ -41,6 +41,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 34**: How the SPL Token Works
 - [x] **Day 35**: Interacting with SPL Tokens via CPI (Minting, Transferring, and Disabling Authority)
 - [x] **Day 36**: Token Sale with PDA and Supply Cap
+- [x] **Day 37**: Basic Bank — Deposit, Withdraw, and Balance Tracking
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -394,6 +395,21 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Created an **Admin Configuration** account to securely manage administrative privileges, such as withdrawing accumulated SOL from the treasury.
 - Leveraged **CPIs** to the System Program for SOL transfers and to the SPL Token Program for minting tokens.
 - Verified the complete tokens-for-SOL swap lifecycle, including supply limit enforcement and unauthorized withdrawal prevention, using a TypeScript test suite.
+
+---
+
+### Day 37: Basic Bank — Deposit, Withdraw, and Balance Tracking
+
+- Built a **Basic Bank** program that manages SOL deposits and withdrawals using on-chain accounts.
+- Used a **Keypair-based Bank account** (non-PDA) to hold pooled SOL and track `total_deposits`.
+- Created **PDA-based User Accounts** derived from `["user-account", user.key()]` seeds, storing each user's `owner` and `balance`.
+- Implemented **deposit** using `system_instruction::transfer` via `invoke` to move SOL from the user's wallet into the Bank account.
+- Implemented **withdraw** with rent-exemption awareness — calculates the bank's minimum rent-exempt balance and caps the transfer amount to protect the bank account from garbage collection.
+- Used direct lamport manipulation (`try_borrow_mut_lamports`) for withdrawals since the Bank account is program-owned (not System Program-owned).
+- Applied **`checked_add` / `checked_sub`** for safe arithmetic with overflow protection.
+- Enforced **authorization constraints** on all user-facing instructions using `constraint = user_account.owner == user.key()`.
+- Defined custom **`BankError`** enum with `ZeroAmount`, `InsufficientBalance`, `Overflow`, and `UnauthorizedAccess` variants.
+- Verified the full deposit → balance → withdraw → overdraft-rejection lifecycle in a TypeScript test suite.
 
 ---
 
