@@ -42,6 +42,8 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 35**: Interacting with SPL Tokens via CPI (Minting, Transferring, and Disabling Authority)
 - [x] **Day 36**: Token Sale with PDA and Supply Cap
 - [x] **Day 37**: Basic Bank — Deposit, Withdraw, and Balance Tracking
+- [x] **Day 38**: Metaplex Token Metadata (Concepts and Account Model)
+- [x] **Day 39**: Creating SPL Token Metadata via CPI + Irys Upload
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -410,6 +412,28 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Enforced **authorization constraints** on all user-facing instructions using `constraint = user_account.owner == user.key()`.
 - Defined custom **`BankError`** enum with `ZeroAmount`, `InsufficientBalance`, `Overflow`, and `UnauthorizedAccess` variants.
 - Verified the full deposit → balance → withdraw → overdraft-rejection lifecycle in a TypeScript test suite.
+
+---
+
+### Day 38: Metaplex Token Metadata
+
+- Learned why an SPL Mint alone is not enough for user-facing token identity (name, symbol, image, description).
+- Understood that Metaplex stores metadata in a separate PDA account derived from `metadata`, the Metadata Program ID, and the mint address.
+- Explored key metadata fields including `update_authority`, `mint`, `data`, `primary_sale_happened`, `is_mutable`, and `token_standard`.
+- Learned the on-chain/off-chain split: core metadata on-chain and extended JSON (image, attributes, description) referenced through `uri`.
+- Reviewed core Token Metadata instructions such as `CreateMetadataAccountV3` and `UpdateMetadataAccountV2`.
+- Understood why update authority and mutability flags are central to metadata security and long-term token identity control.
+
+---
+
+### Day 39: Creating SPL Token Metadata via CPI + Irys Upload
+
+- Implemented a complete flow to create fungible token metadata using Anchor CPI into the Metaplex Token Metadata Program.
+- Uploaded token image and JSON metadata to Irys devnet using `@metaplex-foundation/js` and used those URLs as metadata sources.
+- Constructed `DataV2` on-chain with `name`, `symbol`, `uri`, `seller_fee_basis_points`, and `creators`.
+- Derived and validated the metadata PDA in program logic before invoking `CreateMetadataAccountV3Cpi`.
+- Enforced a strict program account check with `#[account(address = METADATA_PROGRAM_ID)]` for safer CPI execution.
+- Verified end-to-end behavior in tests by deriving metadata PDA client-side, invoking `createTokenMetadata`, and asserting account creation + owner correctness.
 
 ---
 
