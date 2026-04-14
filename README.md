@@ -44,6 +44,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 37**: Basic Bank — Deposit, Withdraw, and Balance Tracking
 - [x] **Day 38**: Metaplex Token Metadata (Concepts and Account Model)
 - [x] **Day 39**: Creating SPL Token Metadata via CPI + Irys Upload
+- [x] **Day 40**: Dutch Auction for NFTs (Linear Price Decay)
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -434,6 +435,24 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Derived and validated the metadata PDA in program logic before invoking `CreateMetadataAccountV3Cpi`.
 - Enforced a strict program account check with `#[account(address = METADATA_PROGRAM_ID)]` for safer CPI execution.
 - Verified end-to-end behavior in tests by deriving metadata PDA client-side, invoking `createTokenMetadata`, and asserting account creation + owner correctness.
+
+---
+
+### Day 40: Dutch Auction for NFTs (Linear Price Decay)
+
+- Implemented a **Dutch Auction** mechanism where NFT price starts high and decays linearly over time until reaching a floor price.
+- Used the **Clock Sysvar** to track auction start time and calculate elapsed time for dynamic price computation.
+- Designed the auction flow:
+  - **`initialize_auction`**: Seller specifies starting price, floor price, and duration (in seconds). The NFT is locked in a vault PDA controlled by the program.
+  - **`buy`**: Buyer purchases the NFT at the current time-based price. Price decays linearly: `price = starting_price - (total_drop * elapsed_time / duration)`.
+- Implemented security checks:
+  - Verified auction timing (`start_time <= now < start_time + duration`).
+  - Checked buyer has sufficient SOL balance before transfer.
+  - Prevented double-selling with a `sold` boolean flag.
+  - Used `has_one = seller` constraint to ensure the correct seller is referenced.
+- Utilized **PDA-based vault authority** with signer seeds to allow the program to transfer the NFT from the vault to the buyer.
+- Applied `CpiContext::new_with_signer` to perform a token transfer signed by the vault PDA.
+- Verified the auction lifecycle (initialize → bid during active window → receive NFT at time-based price) in TypeScript tests.
 
 ---
 
