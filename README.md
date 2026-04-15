@@ -45,6 +45,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 38**: Metaplex Token Metadata (Concepts and Account Model)
 - [x] **Day 39**: Creating SPL Token Metadata via CPI + Irys Upload
 - [x] **Day 40**: Dutch Auction for NFTs (Linear Price Decay)
+- [x] **Day 41**: Token 2022 NonTransferable Extension (Non-Transferable Credentials)
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -453,6 +454,23 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - Utilized **PDA-based vault authority** with signer seeds to allow the program to transfer the NFT from the vault to the buyer.
 - Applied `CpiContext::new_with_signer` to perform a token transfer signed by the vault PDA.
 - Verified the auction lifecycle (initialize → bid during active window → receive NFT at time-based price) in TypeScript tests.
+
+---
+
+### Day 41: Token 2022 NonTransferable Extension (Non-Transferable Credentials)
+
+- Explored **Token 2022 (Token Extensions)** as an upgrade to the original SPL Token Program with extensible mint and account features.
+- Learned about the **NonTransferable Extension** which prevents tokens from being transferred once minted, making them ideal for credentials, badges, and non-transferable assets.
+- Implemented a **Credential Mint** initialization:
+  - Initialized the NonTransferable extension using `non_transferable_mint_initialize` CPI.
+  - Set decimals to 0 since credentials are whole units and cannot be fractional.
+  - Used a **PDA as the mint authority** to enable the program to mint credentials programmatically.
+- Implemented an **`issue_credential` instruction**:
+  - Minted exactly one credential token to a recipient's associated token account.
+  - Used `CpiContext::new_with_signer` with PDA signer seeds to authorize minting from the PDA authority.
+  - Applied `init_if_needed` constraint to automatically create the recipient's ATA if it doesn't exist.
+- Demonstrated the use of **signer seeds** in Anchor (`ctx.bumps`) to construct the proper seed format for PDA signing (`&[&[b"mint", &[bump]]]`).
+- Verified the credential issuance lifecycle (initialize credential mint → issue credentials to recipients) in TypeScript tests.
 
 ---
 
