@@ -46,6 +46,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 39**: Creating SPL Token Metadata via CPI + Irys Upload
 - [x] **Day 40**: Dutch Auction for NFTs (Linear Price Decay)
 - [x] **Day 41**: Token 2022 NonTransferable Extension (Non-Transferable Credentials)
+- [x] **Day 42**: Token 2022 Interest-Bearing Mint Extension
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
@@ -471,6 +472,26 @@ My journey of learning Solana development in 60 days, following the tutorial fro
   - Applied `init_if_needed` constraint to automatically create the recipient's ATA if it doesn't exist.
 - Demonstrated the use of **signer seeds** in Anchor (`ctx.bumps`) to construct the proper seed format for PDA signing (`&[&[b"mint", &[bump]]]`).
 - Verified the credential issuance lifecycle (initialize credential mint → issue credentials to recipients) in TypeScript tests.
+
+---
+
+### Day 42: Token 2022 Interest-Bearing Mint Extension
+
+- Explored the **Interest-Bearing Mint Extension** in Token 2022, which enables automatic accrual of interest on token balances without requiring explicit transfers or updates.
+- Learned how Token 2022 extensions are composed by specifying extension types when calculating mint account space using `ExtensionType::try_calculate_account_len`.
+- Implemented a **`create_interest_bearing_mint` instruction**:
+  - Calculated the correct mint account size including `InterestBearingConfig` extension space using `ExtensionType::try_calculate_account_len::<PodMint>`.
+  - Created the mint account manually via `system_program::create_account` with proper lamport funding and space allocation.
+  - Initialized the InterestBearingConfig extension BEFORE initializing the base mint using `interest_bearing_mint_initialize` CPI.
+  - Initialized the base mint with `initialize_mint2`, specifying a PDA as both mint and freeze authority.
+- Implemented a **`mint_tokens` instruction**:
+  - Minted tokens to a recipient's token account using `mint_to` CPI with PDA signer seeds.
+  - Demonstrated how the PDA authority can programmatically control token minting.
+- Implemented an **`update_rate` instruction**:
+  - Updated the interest rate on the mint using `interest_bearing_mint_update_rate` CPI.
+  - Verified that only the designated rate authority can update the interest rate.
+- Understood the critical ordering: **extensions must be initialized before base mint initialization** to ensure proper configuration.
+- Verified the complete lifecycle (create mint → mint tokens → update interest rates) in TypeScript tests.
 
 ---
 
