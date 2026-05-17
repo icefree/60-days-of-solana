@@ -495,4 +495,19 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 
 ---
 
+### Day 43: Cross-Transaction Instruction Verification
+
+- Explored the **Instructions Sysvar** (`Sysvar::Instructions`) to inspect and validate other instructions within the same transaction.
+- Learned how to use `load_current_index_checked()` to determine the index of the currently executing instruction.
+- Learned how to use `load_instruction_at_checked()` to load instructions at specific indices before the current instruction.
+- Implemented instruction verification by:
+  - Loading the previous instruction and validating its program ID matches the System Program.
+  - Deserializing System Program instruction data using `bincode::deserialize` to match against `SystemInstruction::Transfer`.
+  - Verifying the transfer amount matches an expected amount, protecting against front-running and incorrect payments.
+  - Validating account metadata: ensuring the `from` account is a signer and both `from` and `to` accounts are writable.
+- Demonstrated comprehensive error handling with custom error codes covering missing instructions, invalid program IDs, deserialization failures, and account validation errors.
+- Verified transaction structure validation in TypeScript tests by composing multi-instruction transactions and checking program verification logic.
+
+---
+
 Created with ❤️ by Rex
