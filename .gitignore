@@ -3,3 +3,6 @@ node_modules/
 target/
 .anchor/
 .DS_Store
+
+# Keep local only
+web3-earning-guide.md
