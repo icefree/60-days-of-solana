@@ -47,6 +47,7 @@ My journey of learning Solana development in 60 days, following the tutorial fro
 - [x] **Day 40**: Dutch Auction for NFTs (Linear Price Decay)
 - [x] **Day 41**: Token 2022 NonTransferable Extension (Non-Transferable Credentials)
 - [x] **Day 42**: Token 2022 Interest-Bearing Mint Extension
+- [x] **Day 43**: Cross-Transaction Instruction Verification
 - [x] **Mini Project**: Crowdfunding Program
 
 ## 🛠 Tech Stack
